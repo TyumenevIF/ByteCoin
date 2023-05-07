@@ -15,15 +15,12 @@ class ViewController: UIViewController {
     
     let coinManager = CoinManager()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         currencyPicker.dataSource = self
         currencyPicker.delegate = self
     }
-
-
 }
 
 // MARK: - UIPickerViewDataSource
