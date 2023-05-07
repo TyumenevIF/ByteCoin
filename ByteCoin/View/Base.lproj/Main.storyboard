@@ -92,6 +92,11 @@
                             <constraint firstItem="VGd-r6-RZy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="v9t-qj-DwN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bitcoinLabel" destination="Wls-xH-Bbk" id="69a-gs-7mJ"/>
+                        <outlet property="currencyLabel" destination="cMo-cs-pXO" id="1a6-Za-X76"/>
+                        <outlet property="currencyPicker" destination="fME-kW-D6x" id="bUC-5Q-PBL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
