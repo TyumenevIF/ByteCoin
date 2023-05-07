@@ -24,10 +24,24 @@ struct CoinManager {
                     return
                 }
                 
-                let dataAsString = String(data: data!, encoding: .utf8)
-                print(dataAsString!)
+                if let safeData = data {
+                    let bitcoinPrice = parseJSON(safeData)
+                }
             }
             task.resume()
-        }        
+        }
+    }
+    
+    func parseJSON(_ coinData: Data) -> Double? {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(CoinData.self, from: coinData)
+            let lastPrice = decodedData.rate
+            print(lastPrice)
+            return lastPrice
+        } catch {
+            print(error)
+            return nil
+        }
     }
 }
