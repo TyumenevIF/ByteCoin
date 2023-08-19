@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CoinViewController.swift
 //  ByteCoin
 //
 //  Created by Ilyas Tyumenev on 07.05.2023.
@@ -7,25 +7,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CoinViewController: UIViewController {
     
-    @IBOutlet weak var bitcoinLabel: UILabel!
-    @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var currencyPicker: UIPickerView!
-    
+    private let coinView = CoinView()
     var coinManager = CoinManager()
     
+    // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        currencyPicker.dataSource = self
-        currencyPicker.delegate = self
+        view.backgroundColor = UIColor(named: "Background Color")
+        coinView.currencyPicker.dataSource = self
+        coinView.currencyPicker.delegate = self
         coinManager.delegate = self
     }
 }
 
 // MARK: - UIPickerViewDataSource
-extension ViewController: UIPickerViewDataSource {
+extension CoinViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -37,7 +35,7 @@ extension ViewController: UIPickerViewDataSource {
 }
 
 // MARK: - UIPickerViewDataSource
-extension ViewController: UIPickerViewDelegate {
+extension CoinViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return coinManager.currencyArray[row]
@@ -50,12 +48,12 @@ extension ViewController: UIPickerViewDelegate {
 }
 
 // MARK: - CoinManagerDelegate
-extension ViewController: CoinManagerDelegate {
+extension CoinViewController: CoinManagerDelegate {
     
     func didUpdatePrice(price: String, currency: String) {
         DispatchQueue.main.async {
-            self.bitcoinLabel.text = price
-            self.currencyLabel.text = currency
+            self.coinView.bitcoinLabel.text = price
+            self.coinView.currencyLabel.text = currency
         }
     }
     
