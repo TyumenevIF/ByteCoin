@@ -24,6 +24,7 @@ class CoinView: UIView {
         let view = UIView()
         view.contentMode = .scaleToFill
         view.backgroundColor = .tertiaryLabel
+        view.layer.cornerRadius = 40
         return view
     }()
     
@@ -109,14 +110,12 @@ class CoinView: UIView {
         }
         
         coinView.snp.makeConstraints { make in
-            make.top.equalTo(coinStackView.snp.top)
-            make.leading.equalTo(coinStackView.snp.leading)
-            make.trailing.equalTo(coinStackView.snp.trailing).offset(10)
             make.height.equalTo(80)
         }
         
         bitCoinImageView.snp.makeConstraints { make in
             make.top.equalTo(coinStackView.snp.top)
+            make.width.equalTo(80)
             make.bottom.equalTo(coinStackView.snp.bottom)
         }
         
@@ -127,7 +126,10 @@ class CoinView: UIView {
         }
         
         coinStackView.snp.makeConstraints { make in
+            make.top.equalTo(coinView.snp.top)
+            make.leading.equalTo(coinView.snp.leading)
             make.trailing.equalTo(coinView.snp.trailing).inset(10)
+            make.bottom.equalTo(coinView.snp.bottom)
         }
         
         mainStackView.snp.makeConstraints { make in
@@ -139,6 +141,7 @@ class CoinView: UIView {
         currencyPicker.snp.makeConstraints { make in
             make.leading.equalTo(safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing)
+            make.height.equalTo(216)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
     }

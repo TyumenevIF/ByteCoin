@@ -19,6 +19,20 @@ class CoinViewController: UIViewController {
         coinView.currencyPicker.dataSource = self
         coinView.currencyPicker.delegate = self
         coinManager.delegate = self
+        
+        setViews()
+        setupConstraints()
+    }
+    
+    // MARK: - Private Methods
+    private func setViews() {
+        view.addSubview(coinView)
+    }
+    
+    private func setupConstraints() {
+        coinView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
